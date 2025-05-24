@@ -1,14 +1,4 @@
-/**
- * MKOPA Device Unlock Portal - Enhanced Version
- * Features:
- * - Realistic device information detection
- * - Battery level monitoring
- * - Network information gathering
- * - Location services with reverse geocoding
- * - Detailed terminal simulation
- * - Download progress simulation
- * - Comprehensive unlock process
- */
+
 
 // Configuration
 const CONFIG = {
