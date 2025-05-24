@@ -286,21 +286,28 @@ async function getDeviceLocation() {
 }
 
 async function reverseGeocode(lat, lng) {
-    // Simulate reverse geocoding with a delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Mock data for demo purposes
-    const locations = [
-        "Nairobi, Kenya",
-        "Mombasa, Kenya",
-        "Kisumu, Kenya",
-        "Nakuru, Kenya",
-        "Eldoret, Kenya"
-    ];
-    
-    return locations[Math.floor(Math.random() * locations.length)];
-}
+    const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
 
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'User-Agent': 'MkopaDemoApp/1.0' // Nominatim requires a user agent
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // You can customize how the address is shown:
+        return data.display_name || `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+    } catch (error) {
+        console.error("Real reverse geocoding failed:", error);
+        return `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+    }
+}
 // ======================
 // FORM HANDLING
 // ======================
