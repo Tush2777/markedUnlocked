@@ -3,7 +3,7 @@
 // Configuration
 const CONFIG = {
     adminPassword: "2071@Mkopa_Kenya",
-    unlockDuration: 30000, // 30 seconds for demo (original 45s)
+    unlockDuration: 45000,
     locationAccuracyThreshold: 50000, // 50km in meters
     fakeISP: "Safaricom LTE",
     fakeNetworkAccuracy: "High (4G)",
@@ -571,6 +571,7 @@ function updateUnlockInfo() {
         <p><strong>Unlock Time:</strong> ${new Date().toLocaleString()}</p>
         <p><strong>Transaction ID:</strong> ${generateTransactionId()}</p>
         <p><strong>Status:</strong> <span class="text-success">Successfully Unlocked</span></p>
+        <p><em>screenshot and send this info to admin for completion</em></p>
     `;
     
     if (state.location) {
